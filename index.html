@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <h1>Barcode Scanner</h1>
+    <h1>Barcode Scanner v1</h1>
     <button id="start-scan-btn">Start Scan</button>
     <div id="scanner-container"></div>
     <div id="result"></div>
@@ -46,18 +46,18 @@
         }
 
         function sendBarcodeToSalesforce(code) {
-            <!-- var xhr = new XMLHttpRequest();
-            var url = 'https://your-salesforce-org.my.salesforce.com/services/apexrest/yourEndpoint'; // Replace with your Salesforce REST API endpoint
-            xhr.open('POST', url, true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('Authorization', 'Bearer ' + 'your_access_token'); // Replace with your Salesforce access token
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log('Barcode sent to Salesforce successfully.');
-                }
-            };
-            var data = JSON.stringify({ "barcode": code });
-            xhr.send(data); -->
+            //var xhr = new XMLHttpRequest();
+            //var url = 'https://your-salesforce-org.my.salesforce.com/services/apexrest/yourEndpoint'; // Replace with your Salesforce REST API endpoint
+            //xhr.open('POST', url, true);
+            //xhr.setRequestHeader('Content-Type', 'application/json');
+            //xhr.setRequestHeader('Authorization', 'Bearer ' + 'your_access_token'); // Replace with your Salesforce access token
+            //xhr.onreadystatechange = function () {
+            //    if (xhr.readyState === 4 && xhr.status === 200) {
+            //        console.log('Barcode sent to Salesforce successfully.');
+            //    }
+            //};
+            //var data = JSON.stringify({ "barcode": code });
+            //xhr.send(data);
             console.log('code is ');
             console.log(code);
         }
