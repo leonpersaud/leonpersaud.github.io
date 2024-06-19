@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Barcode Scanner</h1>
-    <button onclick="startScan()">Start Scan</button>
+    <button id="start-scan-btn">Start Scan</button>
     <div id="scanner-container"></div>
     <div id="result"></div>
 
@@ -58,9 +58,11 @@
             };
             var data = JSON.stringify({ "barcode": code });
             xhr.send(data); -->
-            console.log('code is');
+            console.log('code is ');
             console.log(code);
         }
+
+        document.getElementById('start-scan-btn').addEventListener('click', startScan);
     </script>
 </body>
 </html>
