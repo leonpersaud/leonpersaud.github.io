@@ -46,6 +46,7 @@
     <div id="result"></div>
 
     <script>
+        console.log('test 1')
         const codeReader = new ZXing.BrowserQRCodeReader();
 
         function startScan() {
@@ -70,7 +71,7 @@
                     console.log('QR Code sent to Salesforce successfully.');
                 }
             };
-            var data = JSON.stringify({ "qrCode": code });
+            var data = JSON.stringify({ "qrCode": code, "event" : "a0G8B000003Y92rUAC" });
             xhr.send(data);
         }
 
