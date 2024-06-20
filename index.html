@@ -9,12 +9,40 @@
             height: 400px;
             border: 1px solid black;
         }
+        .scanButton {
+         background-color:#676be6;
+         border:none;
+         color:white;
+         font-weight:Bold;
+         font-size:16px;
+         }
+         .scanButton {
+         width: 200px;
+         height:50px;
+         }
+         .scanButton {
+         border-radius:8px;
+         }
+         .scanButton {
+         display:block;
+         margin:auto;
+         }
+         .center {
+         display:block;
+         margin-left:auto;
+         margin-right:auto;
+         width:50%;
+         }
+         h1 {text-align:center;}
+         h1 {font-family:verdana;}
     </style>
 </head>
 <body>
-    <h1>QR Code Scanner 5</h1>
-    <button id="start-scan-btn">Start Scan</button>
+   <img src="https://kemicard.app/wp-content/uploads/2024/06/KCCNYhorizontalverkr_eng-1.jpg" alt="KCC Logo" style="width:505px;height:138px" class="center">
+    <h1>Membership Scanner</h1>
     <video id="scanner-container"></video>
+    
+    <button class="scanButton" id="start-scan-btn">Start Scan</button>
     <div id="result"></div>
 
     <script>
@@ -48,5 +76,6 @@
 
         document.getElementById('start-scan-btn').addEventListener('click', startScan);
     </script>
+    
 </body>
 </html>
