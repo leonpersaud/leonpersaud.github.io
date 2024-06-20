@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <h1>QR Code Scanner 1</h1>
+    <h1>QR Code Scanner 5</h1>
     <button id="start-scan-btn">Start Scan</button>
     <video id="scanner-container"></video>
     <div id="result"></div>
@@ -33,10 +33,10 @@
 
         function sendQRCodeToSalesforce(code) {
             var xhr = new XMLHttpRequest();
-            var url = 'https://your-salesforce-org.my.salesforce.com/services/apexrest/yourEndpoint'; // Replace with your Salesforce REST API endpoint
+            var url = 'https://java-ability-263-dev-ed.scratch.my.salesforce.com/services/apexrest/qrscan';
             xhr.open('POST', url, true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('Authorization', 'Bearer ' + 'your_access_token'); // Replace with your Salesforce access token
+            xhr.setRequestHeader('Authorization', 'Bearer 00D8B000001CHS4!AQUAQBy64r_orLHAbyj6d8QAekFAms2X_JeyxMLR.19qQo4l4m6mqLwYrNjGJd8SyEbfOconbtsNNI9eOd3G5tmOegWh.St8'); 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     console.log('QR Code sent to Salesforce successfully.');
