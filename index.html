@@ -53,7 +53,7 @@
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 9')
+        console.log('test 10')
         const codeReader = new ZXing.BrowserQRCodeReader();
 
         function startScan() {
@@ -83,6 +83,7 @@
                   console.log('Raw Response from Salesforce:', xhr.responseText);
                   try {
                      var sanitizedResponseText = xhr.responseText.replace(/\\"/g, '"');
+                     console.log(sanitizedResponseText);
                      var response = JSON.parse(sanitizedResponseText);
                       console.log('Parsed Response:', response);
                       // Check if contactName is in the response
