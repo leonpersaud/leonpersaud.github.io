@@ -53,7 +53,7 @@
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 11')
+        console.log('test 12')
         const codeReader = new ZXing.BrowserQRCodeReader();
 
         function startScan() {
@@ -66,7 +66,7 @@
                     document.getElementById('result').innerText = 'Scanned QR Code: ' + result.text;
                     sendQRCodeToSalesforce(result.text);
                     // Stop the scanner
-                    //codeReader.reset();
+                    codeReader.reset();
                 })
                 .catch(err => console.error(err));
         }
@@ -89,17 +89,16 @@
                      var response = JSON.parse(sanitizedResponseText);
                       console.log('Parsed Response:', response);
                       // Check if contactName is in the response
-                      if (response.contactName) {
+                      if (response.contactName && response.memberNumber) {
                           console.log('Contact Name:', response.contactName);
-                          document.getElementById('result').innerText = 'Contact Name: ' + response.contactName;
+                          document.getElementById('result').innerText = 'Name: ' + response.contactName;
+                          document.getElementById('membership').innerText = 'Membership Number: ' + response.memberNumber;
                       } else {
-                          console.warn('Contact Name not found in response:', response);
+                          console.warn('Contact Name or Member number not found in response:', response);
                       }
                   } catch (e) {
                       console.error('Failed to parse JSON response:', e);
                   }
-                  //document.getElementById('result').innerText = 'Name: ' + response.contactName;
-                  //document.getElementById('membership').innerText = 'Membership Number: ' + response.memberNumber;
                 }
             };
             var data = JSON.stringify({ "qrCode": code, "event" : "a0G8B000003Y92rUAC" });
