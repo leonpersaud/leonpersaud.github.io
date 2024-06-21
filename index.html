@@ -53,7 +53,7 @@
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 5')
+        console.log('test 6')
         const codeReader = new ZXing.BrowserQRCodeReader();
 
         function startScan() {
@@ -66,7 +66,7 @@
                     document.getElementById('result').innerText = 'Scanned QR Code: ' + result.text;
                     sendQRCodeToSalesforce(result.text);
                     // Stop the scanner
-                    codeReader.reset();
+                    //codeReader.reset();
                 })
                 .catch(err => console.error(err));
         }
@@ -84,6 +84,8 @@
                   // Parse and use the response as needed
                   var response = JSON.parse(xhr.responseText);
                   console.log(response.status + " " + response.message);
+                  console.log('Name = ' + response.contactName);
+                  console.log('Membership Number = ' + response.memberNumber);
                   document.getElementById('result').innerText = 'Name: ' + response.contactName;
                   document.getElementById('membership').innerText = 'Membership Number: ' + response.memberNumber;
                 }
