@@ -9,8 +9,13 @@
             height: 400px;
             border: 1px solid black;
         }
-        .result {
+        .resultVerified {
          color: green;
+         font-weight: bold;
+         font-size:24px;
+        }
+        .resultExpired {
+         color: red;
          font-weight: bold;
          font-size:24px;
         }
@@ -51,18 +56,21 @@
     <div id="space_1">&nbsp;</div>
     <div id="space_2">&nbsp;</div>
     <div id="space_3">&nbsp;</div>
-    <div id="space_4">&nbsp;</div>
-    <div id="result" class="result"></div>
-    <div id="membership" class="result"></div>
+    <div id="result" class="resultVerified"></div>
+    <div id="membership" class="resultVerified"></div>
+    <div id="expiryDate" class="resultVerified"></div>
+    <div id="status" class="resultVerified"></div>
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 12')
+        console.log('test 13')
         const codeReader = new ZXing.BrowserQRCodeReader();
 
         function startScan() {
             document.getElementById('result').innerHTML = '';
             document.getElementById('membership').innerHTML = '';
+            document.getElementById('expiryDate').innerHTML = '';
+            document.getElementById('status').innerHTML = '';
             const videoElement = document.getElementById('scanner-container');
 
             codeReader.decodeFromInputVideoDevice(undefined, videoElement)
@@ -80,7 +88,7 @@
             var url = 'https://java-ability-263-dev-ed.scratch.my.salesforce.com/services/apexrest/qrscan';
             xhr.open('POST', url, true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('Authorization', 'Bearer 00D8B000001CHS4!AQUAQMXD82YLUBA77ykrniHlKRg2ZhGAxvvYnUyccSZGsGwFgCBu15zmoAasa2TxLyVQwVKcb.ScDL4HufXyuj8XZMMjVR1M'); 
+            xhr.setRequestHeader('Authorization', 'Bearer 00D8B000001CHS4!AQUAQOGhe07q4LQ7jM4WjleI0Ccd8ExdnyabNNuSanp_uIXYSd3N0Lmnn7jf8L9qkBbOTF1n8MEbtJdTzShIThHqQbD4EaEm'); 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                   console.log('QR Code sent to Salesforce successfully.');
@@ -93,10 +101,25 @@
                      var response = JSON.parse(sanitizedResponseText);
                       console.log('Parsed Response:', response);
                       // Check if contactName is in the response
-                      if (response.contactName && response.memberNumber) {
+                      if (response.contactName && response.memberNumber && response.expiryDate && response.memberStatus) {
                           console.log('Contact Name:', response.contactName);
                           document.getElementById('result').innerText = 'Name: ' + response.contactName;
                           document.getElementById('membership').innerText = 'Membership Number: ' + response.memberNumber;
+                          document.getElementById('expiryDate').innerText = 'Expiry Date: ' + response.expiryDate;
+                          document.getElementById('status').innerText = 'Status: ' + response.memberStatus;
+
+                         if (response.memberStatus != 'Verified') {
+                           //  set new class
+                           var divIds = ['result', 'membership', 'expiryDate', 'status'];
+
+                           divIds.forEach(function(divId) {
+                              var element = document.getElementById(divId)
+                              element.className = '';
+                              element.classList.add('resultExpired');
+                           });
+                           
+                         }
+                         
                       } else {
                           console.warn('Contact Name or Member number not found in response:', response);
                       }
