@@ -53,7 +53,7 @@
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 6')
+        console.log('test 7')
         const codeReader = new ZXing.BrowserQRCodeReader();
 
         function startScan() {
@@ -79,15 +79,23 @@
             xhr.setRequestHeader('Authorization', 'Bearer 00D8B000001CHS4!AQUAQMXD82YLUBA77ykrniHlKRg2ZhGAxvvYnUyccSZGsGwFgCBu15zmoAasa2TxLyVQwVKcb.ScDL4HufXyuj8XZMMjVR1M'); 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log('QR Code sent to Salesforce successfully.');
-                    console.log('Response from Salesforce:', xhr.responseText);
-                  // Parse and use the response as needed
-                  var response = JSON.parse(xhr.responseText);
-                  console.log(response.status + " " + response.message);
-                  console.log('Name = ' + response.contactName);
-                  console.log('Membership Number = ' + response.memberNumber);
-                  document.getElementById('result').innerText = 'Name: ' + response.contactName;
-                  document.getElementById('membership').innerText = 'Membership Number: ' + response.memberNumber;
+                  console.log('QR Code sent to Salesforce successfully.');
+                  console.log('Raw Response from Salesforce:', xhr.responseText);
+                  try {
+                      var response = JSON.parse(xhr.responseText);
+                      console.log('Parsed Response:', response);
+                      // Check if contactName is in the response
+                      if (response.contactName) {
+                          console.log('Contact Name:', response.contactName);
+                          document.getElementById('result').innerText = 'Contact Name: ' + response.contactName;
+                      } else {
+                          console.warn('Contact Name not found in response:', response);
+                      }
+                  } catch (e) {
+                      console.error('Failed to parse JSON response:', e);
+                  }
+                  //document.getElementById('result').innerText = 'Name: ' + response.contactName;
+                  //document.getElementById('membership').innerText = 'Membership Number: ' + response.memberNumber;
                 }
             };
             var data = JSON.stringify({ "qrCode": code, "event" : "a0G8B000003Y92rUAC" });
