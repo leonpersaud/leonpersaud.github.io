@@ -9,7 +9,7 @@
             height: 400px;
             border: 1px solid black;
         }
-        .resultVerified {
+        .resultValid {
          color: green;
          font-weight: bold;
          font-size:24px;
@@ -56,20 +56,20 @@
     <div id="space_1">&nbsp;</div>
     <div id="space_2">&nbsp;</div>
     <div id="space_3">&nbsp;</div>
-    <div id="result" class="resultVerified"></div>
-    <div id="membership" class="resultVerified"></div>
-    <div id="expiryDate" class="resultVerified"></div>
-    <div id="status" class="resultVerified"></div>
+    <div id="result" class="resultValid"></div>
+    <div id="membership" class="resultValid"></div>
+    <div id="expiryDate" class="resultValid"></div>
+    <div id="status" class="resultValid"></div>
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 15')
+        console.log('test 16')
         const codeReader = new ZXing.BrowserQRCodeReader();
         var divIds = ['result', 'membership', 'expiryDate', 'status'];
 
         function startScan() {
             clearResults();
-            setClass('resultVerified');
+            setClass('resultValid');
             const videoElement = document.getElementById('scanner-container');
 
             codeReader.decodeFromInputVideoDevice(undefined, videoElement)
@@ -107,7 +107,7 @@
                           document.getElementById('expiryDate').innerText = 'Expiry Date: ' + response.expiryDate;
                           document.getElementById('status').innerText = 'Status: ' + response.memberStatus;
 
-                         if (response.memberStatus != 'Verified') {
+                         if (response.memberStatus != 'Valid') {
                            setClass('resultExpired');
                          }
                          
