@@ -63,14 +63,13 @@
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 13')
+        console.log('test 14')
         const codeReader = new ZXing.BrowserQRCodeReader();
+        var divIds = ['result', 'membership', 'expiryDate', 'status'];
 
         function startScan() {
-            document.getElementById('result').innerHTML = '';
-            document.getElementById('membership').innerHTML = '';
-            document.getElementById('expiryDate').innerHTML = '';
-            document.getElementById('status').innerHTML = '';
+            clearResults();
+            setClass('resultVerified');
             const videoElement = document.getElementById('scanner-container');
 
             codeReader.decodeFromInputVideoDevice(undefined, videoElement)
@@ -109,15 +108,7 @@
                           document.getElementById('status').innerText = 'Status: ' + response.memberStatus;
 
                          if (response.memberStatus != 'Verified') {
-                           //  set new class
-                           var divIds = ['result', 'membership', 'expiryDate', 'status'];
-
-                           divIds.forEach(function(divId) {
-                              var element = document.getElementById(divId)
-                              element.className = '';
-                              element.classList.add('resultExpired');
-                           });
-                           
+                           setClass('resultExpired');
                          }
                          
                       } else {
@@ -130,6 +121,21 @@
             };
             var data = JSON.stringify({ "qrCode": code, "event" : "a0G8B000003Y92rUAC" });
             xhr.send(data);
+        }
+
+        function setClass (newClass) {
+            divIds.forEach(function(divId) {
+               var element = document.getElementById(divId)
+               element.className = '';
+               element.classList.add(newClass);
+            });
+        }
+
+        function clearResults () {
+            divIds.forEach(function(divId) {
+               var element = document.getElementById(divId)
+               element.innerHTML = '';
+            });
         }
 
         document.getElementById('start-scan-btn').addEventListener('click', startScan);
