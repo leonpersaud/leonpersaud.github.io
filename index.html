@@ -63,7 +63,7 @@
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 1')
+        console.log('test 2')
         const codeReader = new ZXing.BrowserQRCodeReader();
         var divIds = ['result', 'membership', 'expiryDate', 'status'];
 
@@ -84,7 +84,7 @@
 
         function sendQRCodeToSalesforce(code) {
             var xhr = new XMLHttpRequest();
-            var url = 'https://java-ability-263-dev-ed.scratch.my.salesforce.com/services/apexrest/qrscan';
+            var url = 'https://connect-power-929-dev-ed.scratch.my.salesforce.com/services/apexrest/qrscan';
             xhr.open('POST', url, true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.setRequestHeader('Authorization', 'Bearer 00D7g000001SL9m!ARwAQEA1LVrt6wnTpRlcZ3hKKvfxk8YUAu9QOcqbFLjXsbJYg1klh_cBdeFhO9i52BCVL6GNjIUVQQEeybIF_oIkgNsaE9QL'); 
