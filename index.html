@@ -63,7 +63,7 @@
     <img src="https://kemicard.app/wp-content/uploads/2024/06/Powered-By-Kemicard.png" alt="Kemicard Logo" style="width:505px;height:138px" class="center">
 
     <script>
-        console.log('test 1')
+        console.log('test 2')
         const codeReader = new ZXing.BrowserQRCodeReader();
         var divIds = ['result', 'membership', 'expiryDate', 'status'];
 
@@ -87,7 +87,7 @@
             var url = 'https://connect-power-929-dev-ed.scratch.my.salesforce.com/services/apexrest/qrscan';
             xhr.open('POST', url, true);
             xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('Authorization', 'Bearer 00D7g000001SL9m!ARwAQJ.dttl_yfFNllKi.Gl7ytlC.F008bb8odcaTr4PpNv0w_jrEL5wRQJMtfzYbVomKQee32YYHmjD6vHQPPo9EU3Fk_fs'); 
+            xhr.setRequestHeader('Authorization', 'Bearer 00D7g000001SL9m!ARwAQNthDH9QbgV62bI45jsiYYiJW9Dr2ia3HkZZa7y7zsbVuz39wyN6QzZrEs1Rqt4gkHoUIHa83lyEyYcWmGJC.SHDGRrx'); 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                   console.log('QR Code sent to Salesforce successfully.');
